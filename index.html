@@ -28,10 +28,22 @@ body.gold .header h2 a{
     filter: hue-rotate(0deg);
 }
 body.gold canvas {
-    filter: drop-shadow(2em 4em 0px #FFB400) drop-shadow(-8em -14em 0px #ffc400);
+    filter: drop-shadow(2em 4em 0px #d8bd10) drop-shadow(-8em -14em 0px #d8bd10);
 }
 body.gold .header .spotlight {
     filter: invert(1) brightness(4.7) opacity(0.5);
+}
+body.gold .mountains .box {
+  border-color: #d8a910;
+  box-shadow: 
+    -1em -0.2em 0.4em -1.1em #c2ccff,
+    inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
+    inset 10.2em 10.3em 2em -10em #d4e6ff2f;
+}
+
+body.gold .mountains .box::before,
+body.gold .mountains .box::after {
+  background: #d8a910;
 }
 
 body.gold .content-section,
@@ -92,14 +104,14 @@ h2 a {
     transition: box-shadow 1s ease-in-out;
 }
 .header > div.mid-spot:hover {
-    box-shadow: -0.3em 0.1em 0.2em 0 #FFB400;
+    box-shadow: -0.3em 0.1em 0.2em 0 #d8bd10;
 }
 body.gold .header > div.mid-spot:hover {
     box-shadow: -0.3em 0.1em 0.2em 0 #98c0ef;
 }
 
 body.gold .header > div.mid-spot {
-    box-shadow: 0 0 1em 0 #FFB400;
+    box-shadow: 0 0 1em 0 #d8bd10;
 }
 
 .header > :nth-child(2):hover ~ .spotlight {
@@ -398,6 +410,73 @@ p {
     }
 }
 
+.mountains {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 31em;
+  margin: auto;
+  width: 100%;
+  height: 10em;
+  pointer-events: none;
+}
+
+.mountains::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 500%;
+  position: absolute;
+  top: 0%;
+  background: linear-gradient(0deg, #191919 80%, transparent 90%);
+  z-index: 2;
+}
+
+.mountains .box {
+  position: absolute;
+  left: 50%;
+  bottom: -108%;
+  transform: translateX(-50%);
+  width: 14em;
+  height: 10em;
+  border: 2px solid #c2ccff;
+  box-shadow: 
+    -1em -0.2em 0.4em -1.1em #191919,
+    inset 0.2em 0.3em 0.2em -0.2em #191919,
+    inset 10.2em 10.3em 2em -10em #191919;
+  background: transparent;
+  z-index: 1;
+  animation: boxload 2s ease-out 2.2s forwards;
+}
+
+.mountains .box::before,
+.mountains .box::after {
+  content: '';
+  position: absolute;
+  background: #c2ccff;
+}
+
+.mountains .box::before {
+  top: -1em;
+  left: 2em;
+  right: 2em;
+  height: 1em;
+  transform: skew(-45deg);
+}
+
+.mountains .box::after {
+  top: -1em;
+  right: -1em;
+  width: 1em;
+  height: 3em;
+  transform: skew(0, -45deg);
+}
+
+@keyframes boxload {
+  0% { bottom: -240%; }
+  100% { bottom: -108%; }
+}
+
 .hero-spacer {
     height: 40em;
     pointer-events: none;
@@ -504,6 +583,9 @@ p {
   </div>
 </div>
 <p class="heroP">Building better businesses for humans</p>
+<div class="mountains">
+  <div class="box"></div>
+</div>
 <div class="hero-spacer"></div>
 
 <div class="content-section">
