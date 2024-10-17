@@ -51,7 +51,7 @@ html { -ms-overflow-style: none; scrollbar-width: none; }
         -webkit-text-fill-color: transparent;
     }
     .header .spotlight > div {
-        background-image: conic-gradient(from 0deg at 50% -5%, transparent 45%, rgba(103, 131, 169, .3) 49%, rgba(103, 131, 169, .5) 50%, rgba(103, 131, 169, .3) 51%, transparent 55%);
+        /*background-image: conic-gradient(from 0deg at 50% -5%, transparent 45%, rgba(103, 131, 169, .3) 49%, rgba(103, 131, 169, .5) 50%, rgba(103, 131, 169, .3) 51%, transparent 55%);*/
     }
     body.gold {
         --bg-color: #f5f5f5;
@@ -261,10 +261,15 @@ button.contact-btn:hover .glow::after, button.contact-btn:hover .glow::before {
     pointer-events: none;
     position: absolute; left: 0; right: 0; top:0; margin: 0 auto;
     transition: filter 1s ease-in-out;
-
     height: 42em; width: 100%;
     overflow: hidden;
 }
+@media (prefers-color-scheme: light) {
+    .header .spotlight {
+        display: none;
+    }
+}
+
 .header .spotlight > div {
     border-radius: 0 0 50% 50%;
     position: absolute; left: 0; right: 0; margin: 0 auto; 
