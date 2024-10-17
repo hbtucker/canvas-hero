@@ -9,10 +9,82 @@ html, body { height: 100%; }
 html::-webkit-scrollbar { display: none; }
 html { -ms-overflow-style: none; scrollbar-width: none; }
 
+:root {
+    --bg-color: #191919;
+    --text-color: #bad6f7;
+    --highlight-color: #98c0ef;
+    --particle-color: 186, 214, 247;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #e6e6e6;
+        --text-color: #4a4a4a;
+        --highlight-color: #6783a9;
+        --particle-color: 74, 74, 74;
+    }
+    .heroT > h2 {
+        color: var(--text-color);
+        background: linear-gradient(0deg, var(--text-color) 30%, var(--highlight-color) 100%);
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+    }
+
+    .heroP {
+        color: var(--text-color);
+        background: linear-gradient(0deg, var(--text-color) 0, var(--highlight-color) 100%);
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+    }
+
+    .header > h2 a {
+        color: var(--text-color);
+    }
+    button.contact-btn {
+        background: var(--bg-color);
+        color: var(--text-color);
+        border-color: var(--highlight-color);
+    }
+    .contact-btn-content {
+        background: linear-gradient(0deg, var(--text-color), var(--highlight-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .header .spotlight > div {
+        background-image: conic-gradient(from 0deg at 50% -5%, transparent 45%, rgba(103, 131, 169, .3) 49%, rgba(103, 131, 169, .5) 50%, rgba(103, 131, 169, .3) 51%, transparent 55%);
+    }
+    body.gold {
+        --bg-color: #e6e6e6;
+        --text-color: #4a4a4a;
+        --highlight-color: #6783a9;
+        --particle-color: 74, 74, 74;
+    }
+
+    body.gold .header h2,
+    body.gold p,
+    body.gold > * > * :not(.contact-btn) {
+        filter: none;
+    }
+
+    body.gold .heroT > h2,
+    body.gold .heroP,
+    body.gold .heroSubP p {
+        background: linear-gradient(0deg, var(--text-color) 30%, var(--highlight-color) 100%);
+        -webkit-text-fill-color: transparent;
+    }
+    body.gold canvas {
+        filter: none;
+    }
+    .header > div.mid-spot {
+        display: none;
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #191919 linear-gradient(0deg,rgb(25,25,25),rgba(25,25,25));
+    background: var(--bg-color);
+    color: var(--text-color);
     border-radius: 5px;
 
     font-size: max(calc(var(--_size) * 0.03), 10px);
@@ -46,7 +118,7 @@ h2 a {
 .header {
     display: flex; width: 100%;
     justify-content: center;
-    color: #bad6f7;
+    color: var(--text-color);
     padding: 2em;
     position: absolute;
     top: 0; left: 0; right: 0; margin: 0 auto;
@@ -78,8 +150,8 @@ h2 a {
 .header > div.mid-spot {
     width: 1.8em; height: 1.8em;
     border-radius: 50%;
-    background: black;
-    box-shadow: 0 0 1em 0 #98c0ef;
+    background: var(--bg-color);
+    box-shadow: 0 0 1em 0 var(--highlight-color);
     cursor: pointer;
     transition: box-shadow 1s ease-in-out;
 }
@@ -87,7 +159,7 @@ h2 a {
     box-shadow: -0.3em 0.1em 0.2em 0 #FFB400;
 }
 body.gold .header > div.mid-spot:hover {
-    box-shadow: -0.3em 0.1em 0.2em 0 #98c0ef;
+    box-shadow: -0.3em 0.1em 0.2em 0 var(--highlight-color);
 }
 
 body.gold .header > div.mid-spot {
@@ -115,19 +187,19 @@ button.contact-btn {
     opacity: 1;
     padding-top: 0.3em;
 
-    background: #121521;
-    color: #9dc3f7;
+    background: var(--bg-color);
+    color: var(--text-color);
     white-space:nowrap;
 }
 button.contact-btn::before {
     content: ''; display: block; position:absolute; left: 0; top:0; border-radius: 20em;
     width: 100%; height: 100%;
-    background: #c2ccff91 radial-gradient(farthest-side at 50% 100%, #c2ccff, transparent);
+    background: var(--highlight-color) radial-gradient(farthest-side at 50% 100%, var(--highlight-color), transparent);
     opacity: 0.1;
     transition: all 0.4s ease-in-out;
 }
 button.contact-btn:hover::before {
-    background: #c2ccff1e radial-gradient(farthest-side at 50% 100%, #c2ccff, transparent);
+    background: var(--highlight-color) radial-gradient(farthest-side at 50% 100%, var(--highlight-color), transparent);
     opacity: 0.3;
 }
 .contact-btn .glow {
@@ -152,7 +224,7 @@ button.contact-btn:hover .glow {
     content: "";
     height: 100%;
     offset-anchor: 100% 50%;
-    background: radial-gradient(circle at 50% 50%, hsla(0, 0%, 100%, 0.75), transparent 50%), radial-gradient(circle at 50% 50%, #c2ccff 50%, transparent);
+    background: radial-gradient(circle at 50% 50%, hsla(0, 0%, 100%, 0.75), transparent 50%), radial-gradient(circle at 50% 50%, var(--highlight-color) 50%, transparent);
     opacity: 0.4;
     offset-path: rect(0 100% 100% 0 round 33px);
     position: absolute;
@@ -171,7 +243,7 @@ button.contact-btn:hover .glow {
     }    
 }
 .contact-btn-content {
-    background: linear-gradient(0deg, #d8ecf8, #98c0ef);
+    background: linear-gradient(0deg, var(--text-color), var(--highlight-color));
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1.2em;
@@ -219,7 +291,7 @@ button.contact-btn:hover .glow::after, button.contact-btn:hover .glow::before {
     right: 0;
     bottom: 0;
     height: 10%;
-    background: linear-gradient(to bottom, rgba(25,25,25,0) 0%, rgba(25,25,25,1) 100%);
+    background: linear-gradient(to bottom, rgba(25,25,25,0) 0%, var(--bg-color) 100%);
     pointer-events: none;
 }
 @keyframes loadrot {
@@ -289,7 +361,7 @@ p {
     
     font-size: 7em;
     font-weight: 600;
-    color: #9dc3f7;
+    color: var(--text-color);
     background:
     radial-gradient( 2em 2em at 50% 50%,
         transparent calc(var(--p) - 2em),
@@ -297,7 +369,7 @@ p {
         #fff calc(var(--p) - 0.4em), 
         transparent var(--p) 
     ),
-    linear-gradient(0deg, #bad1f1 30%, #9dc3f7 100%);
+    linear-gradient(0deg, var(--text-color) 30%, var(--highlight-color) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -337,15 +409,15 @@ p {
     opacity: 0;
     translate: 0 1em;
     animation: load 2s ease-out 2s forwards, up 1.4s ease-out 2s forwards;
-    color: #d8ecf8;
+    color: var(--text-color);
     text-shadow: 0 2px 16px rgba(174,207,242,.24);
-    background: linear-gradient(0deg, #d8ecf8 0, #98c0ef 100%);
+    background: linear-gradient(0deg, var(--text-color) 0, var(--highlight-color) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 @keyframes up {      
-    100% { translate: 0; }    
+    100% { translate:  0; }    
 }
 
 .heroSubP {
@@ -362,9 +434,9 @@ p {
 .heroSubP p {
     font-size: 1em;
     position: relative; width: fit-content; margin: auto;
-    color: #d8ecf8;
+    color: var(--text-color);
     text-shadow: 0 2px 16px rgba(174,207,242,.24);
-    background: linear-gradient(0deg, #d8ecf8 0, #98c0ef 100%);
+    background: linear-gradient(0deg, var(--text-color) 0, var(--highlight-color) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -382,12 +454,12 @@ p {
     100% { opacity: 0.3;}    
 }
 .heroSubP p::before{
-    background: linear-gradient( -90deg, #9dc3f7 0%, transparent 100%);
+    background: linear-gradient( -90deg, var(--highlight-color) 0%, transparent 100%);
     right: 120%;
     translate: -5em 0;
 }
 .heroSubP p::after {
-    background: linear-gradient( 90deg, #9dc3f7 0%, transparent 100%);
+    background: linear-gradient( 90deg, var(--highlight-color) 0%, transparent 100%);
     left: 120%;
     translate: 5em 0;
 
@@ -412,7 +484,7 @@ p {
 <!-- design inspired by https://www.authkit.com/ -->
 <div class="header">
   <h2><a href="https://culture-coach.org" target="_blank" rel="noopener noreferrer">By Culture Coach</a></h2>
-  <div class="mid-spot" onclick="document.body.classList.toggle('gold');"></div>
+  <div class="mid-spot" onclick="if (!window.matchMedia('(prefers-color-scheme: light)').matches) document.body.classList.toggle('gold');"></div>
    <a href="mailto:hello@culture-coach.org" target="_blank" rel="noopener noreferrer">
   <button class="contact-btn">
     <span class="glow"></span>
@@ -503,7 +575,8 @@ class Particle {
     }
 
     draw() {
-        ctx.fillStyle = `rgba(${255 - (Math.random() * 255/2)}, 255, 255, ${this.opacity})`;
+        const particleColor = getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim();
+        ctx.fillStyle = `rgba(${particleColor}, ${this.opacity})`;
         ctx.fillRect(this.x, this.y, 0.4, Math.random() * 2 + 1);
     }
 }
@@ -539,6 +612,21 @@ window.addEventListener('resize', onResize);
 
 initParticles();
 animate();
+
+// Check for system dark mode preference
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+function handleDarkModeChange(e) {
+    if (e.matches) {
+        document.documentElement.classList.remove('light-mode');
+        document.documentElement.style.setProperty('--particle-color', '186, 214, 247');
+    } else {
+        document.documentElement.classList.add('light-mode');
+        document.documentElement.style.setProperty('--particle-color', '74, 74, 74');
+        document.body.classList.remove('gold');
+    }
+}
+darkModeMediaQuery.addListener(handleDarkModeChange);
+handleDarkModeChange(darkModeMediaQuery);
 </script>
 </body>
 </html>
